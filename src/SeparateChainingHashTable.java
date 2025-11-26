@@ -11,6 +11,8 @@ import java.util.List;
 // boolean contains( x )  --> Return true if x is present
 // void makeEmpty( )      --> Remove all items
 
+//test
+
 public class SeparateChainingHashTable<AnyType> {
     /**
      * Construct the hash table.
