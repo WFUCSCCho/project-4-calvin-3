@@ -82,9 +82,6 @@ it to this repository.
 
 Insertion, search, and deletion running time (already sorted):
 
-![Firefly picture of a cat 86147](https://github.com/user-attachments/assets/8b2d008e-3011-4979-97b8-fa2e9886a01a)
-
-
 Insertion, search, and deletion running time (shuffled):
 
 Insertion, search, and deletion running time (reversed):
