@@ -84,9 +84,11 @@ Insertion, search, and deletion running time (already sorted):
 <img width="606" height="376" alt="Screenshot 2025-11-26 at 6 57 43 PM" src="https://github.com/user-attachments/assets/0435d3ee-c7c1-4aef-aa9f-f6ebe2955cf0" />
 
 Insertion, search, and deletion running time (shuffled):
+
 <img width="603" height="375" alt="Screenshot 2025-11-26 at 6 58 26 PM" src="https://github.com/user-attachments/assets/7a57c843-2626-491e-a81d-82c113f7c93d" />
 
 Insertion, search, and deletion running time (reversed):
+
 <img width="604" height="373" alt="Screenshot 2025-11-26 at 6 58 48 PM" src="https://github.com/user-attachments/assets/a670e843-57e9-4485-ad06-7cd3fefb55db" />
 
 ## 5. **Document your Dataset and Results**
