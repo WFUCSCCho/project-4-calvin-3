@@ -94,17 +94,27 @@ Document the source of your dataset and any modifications you made to it. Descri
 how it compares to the theoretical performance of the hash table operations.
 
 Dataset Source: 
+
 I used a dataset from the publicly available FIFA player statistics repository on Kaggle.
 Link: https://www.kaggle.com/datasets/sametozturkk/ea-sports-fc-25-real-player-data-sofifa-merge
 
 Dataset Modifications:
+
 None
+
 During parsing, several rows were skipped automatically because non-numeric values appeared in the “overall” or “potential” rating columns. The invalid rows were ignored
 
 Result Analysis: 
-The performance results from my hash table experiments match the expected theoretical behavior of a separate chaining hash table, where average-case insertion, search, and deletion all run in O(1) time, but with practical differences depending on collision patterns. Across all values of N, the timing for each operation increased approximately linearly, which is consistent with the growing cost of chain traversal as the load factor increases.
 
+The performance results from my hash table experiments align closely with the theoretical expectations for a separate chaining hash table. In theory, insertion, search, and deletion operations all run in O(1) average time, assuming the hash function distributes keys uniformly and the load factor remains reasonable. In practice, however, the constant factors differ across operations because collisions create linked lists of varying lengths inside each bucket.
 
+Across all values of N in my dataset, the measured running times for all three operations increased (roughly) linearly. This behavior is consistent with the fact that, as the table fills, some collision chains inevitably grow longer, increasing the traversal cost from a constant amount to a small multiple of that cost.  this doesn't change the theoretical Big-O classification, but it does explain why the graphs imperfectly trend up rather than create perfectly flat(linear) lines.
+
+The most consistent result across all three dataset orderings (sorted, shuffled, reversed) is that insertion was always the slowest operation, while search and deletion were faster and nearly identical in runtime. 
+In theory: Insertion both traverses chains and modifies structure, whereas search and delete merely locate an existing element, which typically requires less work. \
+My results match this theory
+
+The second notable trend is that all three dataset orderings produced very similar performance. Although sorted input is sometimes expected to cause more collisions, my measurements showed only minor differences between sorted, shuffled, and reversed runs. This indicates that the hash function distributed the keys uniformly regardless of order, which is the ideal behavior for a well-designed hash table.
 
 ## Submission:
 
