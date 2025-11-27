@@ -81,21 +81,43 @@ each case. Take a screenshot of your graph and put them here by modifying this f
 it to this repository.
 
 Insertion, search, and deletion running time (already sorted):
-
-![Firefly picture of a cat 86147](https://github.com/user-attachments/assets/8b2d008e-3011-4979-97b8-fa2e9886a01a)
-
+<img width="606" height="376" alt="Screenshot 2025-11-26 at 6 57 43 PM" src="https://github.com/user-attachments/assets/0435d3ee-c7c1-4aef-aa9f-f6ebe2955cf0" />
 
 Insertion, search, and deletion running time (shuffled):
 
+<img width="603" height="375" alt="Screenshot 2025-11-26 at 6 58 26 PM" src="https://github.com/user-attachments/assets/7a57c843-2626-491e-a81d-82c113f7c93d" />
+
 Insertion, search, and deletion running time (reversed):
+
+<img width="604" height="373" alt="Screenshot 2025-11-26 at 6 58 48 PM" src="https://github.com/user-attachments/assets/a670e843-57e9-4485-ad06-7cd3fefb55db" />
 
 ## 5. **Document your Dataset and Results**
 Document the source of your dataset and any modifications you made to it. Describe the results of your analysis and 
 how it compares to the theoretical performance of the hash table operations.
 
-Dataset Source: // FINISH ME
-Dataset Modifications ("None" if unchanged): // FINISH ME
-Result Analysis: // FINISH ME
+Dataset Source: 
+
+I used a dataset from the publicly available FIFA player statistics repository on Kaggle.
+
+Link: https://www.kaggle.com/datasets/sametozturkk/ea-sports-fc-25-real-player-data-sofifa-merge
+
+Dataset Modifications:
+
+None
+
+During parsing, several rows were skipped automatically because non-numeric values appeared in the “overall” or “potential” rating columns. The invalid rows were ignored
+
+Result Analysis: 
+
+The performance results from my hash table experiments align closely with the theoretical expectations for a separate chaining hash table. In theory, insertion, search, and deletion operations all run in O(1) average time, assuming the hash function distributes keys uniformly and the load factor remains reasonable. In practice, however, the constant factors differ across operations because collisions create linked lists of varying lengths inside each bucket.
+
+Across all values of N in my dataset, the measured running times for all three operations increased (roughly) linearly. This behavior is consistent with the fact that, as the table fills, some collision chains inevitably grow longer, increasing the traversal cost from a constant amount to a small multiple of that cost. This doesn't change the theoretical Big-O classification, but it does explain why the graphs imperfectly trend up rather than create perfectly flat(linear) lines.
+
+The most consistent result across all three dataset orderings (sorted, shuffled, reversed) is that insertion was always the slowest operation, while search and deletion were faster and nearly identical in runtime. 
+In theory: Insertion both traverses chains and modifies structure, whereas search and delete merely locate an existing element, which typically requires less work. 
+My results match this theory
+
+The second notable trend is that all three dataset orderings produced very similar performances. Although sorted input is sometimes expected to cause more collisions, my measurements showed only minor differences between sorted, shuffled, and reversed runs. This indicates that the hash function distributed the keys uniformly regardless of order, which is the ideal behavior for a well-designed hash table.
 
 ## Submission:
 

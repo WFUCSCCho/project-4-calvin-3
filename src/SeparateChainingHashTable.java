@@ -38,7 +38,14 @@ public class SeparateChainingHashTable<AnyType> {
      * @param x the item to insert.
      */
     public void insert(AnyType x) {
-        // FINISH ME
+        List<AnyType> whichList = theLists[myhash(x)];
+        if (!whichList.contains(x)) {
+            whichList.add(x);
+
+            // Rehash if the number of elements exceeds table size
+            if (++currentSize > theLists.length)
+                rehash();
+        }
     }
 
     /**
@@ -47,7 +54,11 @@ public class SeparateChainingHashTable<AnyType> {
      * @param x the item to remove.
      */
     public void remove(AnyType x) {
-        // FINISH ME
+        List<AnyType> whichList = theLists[myhash(x)];
+        if (whichList.contains(x)) {
+            whichList.remove(x);
+            currentSize--;
+        }
     }
 
     /**
@@ -57,14 +68,17 @@ public class SeparateChainingHashTable<AnyType> {
      * @return true if x is not found.
      */
     public boolean contains(AnyType x) {
-        // FINISH ME
+        List<AnyType> whichList = theLists[myhash(x)];
+        return whichList.contains(x);
     }
 
     /**
      * Make the hash table logically empty.
      */
     public void makeEmpty() {
-        // FINISH ME
+        for (int i = 0; i < theLists.length; i++)
+            theLists[i].clear();
+        currentSize = 0;
     }
 
     /**
@@ -88,7 +102,18 @@ public class SeparateChainingHashTable<AnyType> {
     }
 
     private void rehash() {
-        // FINISH ME
+        List<AnyType>[] oldLists = theLists;
+
+        // Create new double-sized, empty table
+        theLists = new LinkedList[nextPrime(2 * oldLists.length)];
+        for (int i = 0; i < theLists.length; i++)
+            theLists[i] = new LinkedList<>();
+
+        // Reset size and copy elements over
+        currentSize = 0;
+        for (List<AnyType> list : oldLists)
+            for (AnyType item : list)
+                insert(item);
     }
 
     private int myhash(AnyType x) {
