@@ -6,6 +6,16 @@ import java.util.Scanner;
 import java.util.Collections;
 import java.io.File;
 
+/*∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗*
+  @file: Proj4.java
+  @description: This file is responsible for executing the program
+                - creates lists (sorted, shuffled, reversed) with objects of my dataset
+                - times the sorting algorithm performance
+                - prints the results and appends them to analysis.txt
+  @author: Calvin Malaney
+  @date: November 26, 2025
+∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗*/
+
 public class Proj4 {
     public static void main(String[] args) throws IOException {
         // Use command line arguments to specify the input file
@@ -201,6 +211,7 @@ public class Proj4 {
         out.close();
     }
 
+    // helper for parsing
     private static boolean isNumeric(String s) {
         if (s == null) return false;
         try {
