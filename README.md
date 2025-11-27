@@ -93,9 +93,18 @@ Insertion, search, and deletion running time (reversed):
 Document the source of your dataset and any modifications you made to it. Describe the results of your analysis and 
 how it compares to the theoretical performance of the hash table operations.
 
-Dataset Source: // FINISH ME
-Dataset Modifications ("None" if unchanged): // FINISH ME
-Result Analysis: // FINISH ME
+Dataset Source: 
+I used a dataset from the publicly available FIFA player statistics repository on Kaggle.
+Link: https://www.kaggle.com/datasets/sametozturkk/ea-sports-fc-25-real-player-data-sofifa-merge
+
+Dataset Modifications:
+None
+During parsing, several rows were skipped automatically because non-numeric values appeared in the “overall” or “potential” rating columns. The invalid rows were ignored
+
+Result Analysis: 
+The performance results from my hash table experiments match the expected theoretical behavior of a separate chaining hash table, where average-case insertion, search, and deletion all run in O(1) time, but with practical differences depending on collision patterns. Across all values of N, the timing for each operation increased approximately linearly, which is consistent with the growing cost of chain traversal as the load factor increases.
+
+
 
 ## Submission:
 
